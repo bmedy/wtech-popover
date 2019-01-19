@@ -1,0 +1,25 @@
+:host {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  
+    display: block;
+    position: absolute;
+  
+    transform: translateZ(0);
+  
+    cursor: pointer;
+    opacity: .32;
+    touch-action: none;
+    z-index: 10;
+    background-color: black;
+}
+
+:host(.backdrop-hide) {
+    background: transparent;
+}
+
+:host(.backdrop-no-tappable) {
+    cursor: auto;
+}

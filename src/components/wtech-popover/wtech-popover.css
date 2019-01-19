@@ -1,0 +1,34 @@
+:root {
+    --background: #fff;
+    --z-index: 30;
+}
+
+@keyframes slide-bottom {
+    0% {
+      opacity: 0;
+      transform: translateY(15%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.popover-container {
+    color: #000;
+    animation: .4s slide-bottom;
+}
+
+.popover-container.inactive {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.popover-content {
+    z-index: var(--z-index);
+    background-color: var(--background, #fff);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    position: absolute;
+    overflow: hidden auto;
+}

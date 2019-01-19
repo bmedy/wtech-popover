@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="/build/wtech-popover.js"></script>
+
+  <style>
+    .default {
+      background-color:#44c767;
+      border-radius:10px;
+      border:1px solid #18ab29;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:17px;
+      padding:16px 31px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #2f6627;
+    }
+    .default:hover {
+      background-color:#5cbf2a;
+    }
+
+    .container {
+      min-height: 400px;
+      display: flex;
+      display: -webkit-flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+    .item {
+      flex: 0 0 auto;
+      margin: 5px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <wtech-popover id="default">
+      <div slot="title">
+        <button class="default item">default</button>
+      </div>
+      <div slot="content">
+        <ul>
+          <li>very very very long item 1 for dynamic size</li>
+          <li>very very very long item 2 for dynamic size</li>
+          <li>very very very long item 3 for dynamic size</li>
+        </ul>
+      </div>
+    </wtech-popover>
+    <wtech-popover show-backdrop="false"  id="noBackdrop">
+        <div slot="title">
+          <button class="default item">no backdrop</button>
+        </div>
+        <div slot="content">
+          <ul>
+            <li>toto1</li>
+            <li>toto2</li>
+            <li>toto3</li>
+          </ul>
+        </div>
+      </wtech-popover>
+      <wtech-popover backdrop-dismiss="false" id="noTap">
+          <div slot="title">
+            <button class="default item">no tappable</button>
+          </div>
+          <div slot="content">
+            <ul>
+              <li>tutu1</li>
+              <li>tutu2</li>
+              <li>tutu3</li>
+            </ul>
+          </div>
+        </wtech-popover>
+    </div>
+
+    <script>
+      const popover = document.querySelector('#noTap');
+      popover
+        .querySelectorAll('li')
+        .forEach(el => el.addEventListener('click', () => {
+          popover.dismiss();
+        })
+      )
+    </script>
+
+</body>
+</html>
