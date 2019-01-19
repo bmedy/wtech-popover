@@ -11,6 +11,14 @@
     --arrow-size: 10px;
 }
 
+.backdrop-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 .popover-wrapper {
     position: relative;
     display: inline-block;

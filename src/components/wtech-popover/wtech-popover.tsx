@@ -67,6 +67,14 @@ export class WtechPopover {
         this.didPresent.emit();
     }
 
+    toggle() {
+        if(this.presented) {
+            this.dismiss()
+        } else {
+            this.present()
+        } 
+    }
+
     getContentClasses() {
         const componentOffset = offset(this.el);
         
@@ -88,9 +96,11 @@ export class WtechPopover {
 
     render() {
         return [
-            (this.presented && <wtech-backdrop animated={this.animated} tappable={this.backdropDismiss} visible={this.showBackdrop}></wtech-backdrop>),
+            (this.presented && <div class="backdrop-container">
+                <wtech-backdrop animated={this.animated} tappable={this.backdropDismiss} visible={this.showBackdrop}></wtech-backdrop>
+            </div>),
             <div class="popover-wrapper">
-                <div class="popover-title" onClick={() => this.present()}>
+                <div class="popover-title" onClick={() => this.toggle()}>
                     <slot name="title"></slot>
                 </div>
                 <div class={this.getContentClasses()}>
