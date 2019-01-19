@@ -1,4 +1,5 @@
-import { Component, State, Prop, Event, EventEmitter, Listen, Method } from '@stencil/core';
+import { Component, State, Prop, Event, EventEmitter, Listen, Method, Element } from '@stencil/core';
+import { offset, getAxis } from '../../utils/dom';
 
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, State, Prop, Event, EventEmitter, Listen, Method } from '@st
     styleUrl: 'wtech-popover.css'
 })
 export class WtechPopover {
+
+    @Element() el!: HTMLElement;
 
     @State() presented = false;
 
@@ -64,7 +67,10 @@ export class WtechPopover {
         this.didPresent.emit();
     }
 
-    getContainerClasses() {
+    getContentClasses() {
+        const componentOffset = offset(this.el);
+        
+        const axis = getAxis();
         let classes = ["popover-content"]
         if(this.presented) {
             classes = [...classes, "active"]
@@ -72,18 +78,22 @@ export class WtechPopover {
         if(this.animated) {
             classes = [ ...classes, "animated" ]
         }
+        if(componentOffset.left < axis.x) {
+            classes = [ ...classes, "left" ]
+        } else {
+            classes = [ ...classes, "right" ]
+        }
         return classes.join(" ");
     }
 
     render() {
-        console.log(`tappable=${this.backdropDismiss} visible=${this.showBackdrop} `)
         return [
-            (this.presented && <wtech-backdrop tappable={this.backdropDismiss} visible={this.showBackdrop}></wtech-backdrop>),
+            (this.presented && <wtech-backdrop animated={this.animated} tappable={this.backdropDismiss} visible={this.showBackdrop}></wtech-backdrop>),
             <div class="popover-wrapper">
                 <div class="popover-title" onClick={() => this.present()}>
                     <slot name="title"></slot>
                 </div>
-                <div class={this.getContainerClasses()}>
+                <div class={this.getContentClasses()}>
                     <slot name="content"></slot>
                 </div>
             </div>

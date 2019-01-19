@@ -1,6 +1,7 @@
 :root {
     --background: #fff;
     --z-index: 30;
+    --arrow-size: 10px;
 }
 
 .popover-wrapper {
@@ -14,23 +15,35 @@
     visibility: hidden;
     position: absolute;
     background-color: var(--background);
-    padding: 1.5rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     width: auto;
-    transform: translate(0,-20px);
+    transform: translate(0, 10px);
 }
-.popover-content:before {
+.popover-content::before {
     position: absolute;
     z-index: -1;
     content: '';
-    right: calc(50% - 10px);
     top: -8px;
     border-style: solid;
-    border-width: 0 10px 10px 10px;
+    border-width: 0 var(--arrow-size) var(--arrow-size) var(--arrow-size);
     border-color: transparent transparent var(--background) transparent;
     transition-duration: 0.3s;
     transition-property: transform;
 }
+
+.popover-content.right {
+    right: 10px;
+}
+.popover-content.left {
+    left: 10px;
+}
+.popover-content.right::before {
+    right: 10px;
+}
+.popover-content.left::before {
+    left: 10px;
+}
+
 .popover-content.active {
     opacity: 1;
     visibility: visible;
@@ -39,36 +52,3 @@
 .popover-content.animated {
     transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
 }
-
-/* 
-
-
-@keyframes slide-bottom {
-    0% {
-      opacity: 0;
-      transform: translateY(15%);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-
-.popover-container {
-    color: #000;
-    animation: .4s slide-bottom;
-}
-
-.popover-container.inactive {
-    visibility: hidden;
-    opacity: 0;
-}
-
-.popover-content {
-    z-index: var(--z-index);
-    background-color: var(--background, #fff);
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    position: absolute;
-    overflow: hidden auto;
-} */
