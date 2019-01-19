@@ -18,6 +18,11 @@ export class WtechBackdrop {
     @Prop() visible = true;
 
     /**
+     * If `true`, the backdrop will be animated.
+     */
+    @Prop() animated = true;
+
+    /**
      * If `true`, the backdrop will can be clicked and will emit the `wtechBackdropTap` event.
      */
     @Prop() tappable = true;
@@ -61,7 +66,8 @@ export class WtechBackdrop {
             tabindex: '-1',
             class: {
                 'backdrop-hide': !this.visible,
-                'backdrop-no-tappable': !this.tappable
+                'backdrop-no-tappable': !this.tappable,
+                'backdrop-animated': this.animated
             }
         };
     }

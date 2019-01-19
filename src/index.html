@@ -22,6 +22,9 @@
     .default:hover {
       background-color:#5cbf2a;
     }
+    .default:focus, .default:active {
+      outline:0;
+    }
 
     .container {
       min-height: 400px;
@@ -47,7 +50,7 @@
       <div slot="title">
         <button class="default item">default</button>
       </div>
-      <div slot="content">
+      <div slot="content" style="width: 300px;">
         <ul>
           <li>very very very long item 1 for dynamic size</li>
           <li>very very very long item 2 for dynamic size</li>
@@ -79,6 +82,18 @@
             </ul>
           </div>
         </wtech-popover>
+        <wtech-popover animated="false">
+            <div slot="title">
+              <button class="default item">without animation</button>
+            </div>
+            <div slot="content">
+              <ul>
+                <li>tata1</li>
+                <li>tata2</li>
+                <li>tata3</li>
+              </ul>
+            </div>
+          </wtech-popover>
     </div>
 
     <script>
@@ -90,6 +105,5 @@
         })
       )
     </script>
-
 </body>
 </html>

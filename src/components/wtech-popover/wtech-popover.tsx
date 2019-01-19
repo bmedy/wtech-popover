@@ -42,8 +42,8 @@ export class WtechPopover {
         this.dismiss();
     }
 
-    @Listen('wtechBackdropTap')
     @Method()
+    @Listen('wtechBackdropTap')
     dismiss() {
         this.presented = false;
         this.didDismiss.emit()
@@ -65,9 +65,9 @@ export class WtechPopover {
     }
 
     getContainerClasses() {
-        let classes = ["popover-container"]
-        if(!this.presented) {
-            classes = [...classes, "inactive"]
+        let classes = ["popover-content"]
+        if(this.presented) {
+            classes = [...classes, "active"]
         }
         if(this.animated) {
             classes = [ ...classes, "animated" ]
@@ -78,12 +78,12 @@ export class WtechPopover {
     render() {
         console.log(`tappable=${this.backdropDismiss} visible=${this.showBackdrop} `)
         return [
-            <div class="popover-title" onClick={() => this.present()}>
-                <slot name="title"></slot>
-            </div>,
-            <div class={this.getContainerClasses()}>
-                <wtech-backdrop tappable={this.backdropDismiss} visible={this.showBackdrop} ></wtech-backdrop>
-                <div class="popover-content">
+            (this.presented && <wtech-backdrop tappable={this.backdropDismiss} visible={this.showBackdrop}></wtech-backdrop>),
+            <div class="popover-wrapper">
+                <div class="popover-title" onClick={() => this.present()}>
+                    <slot name="title"></slot>
+                </div>
+                <div class={this.getContainerClasses()}>
                     <slot name="content"></slot>
                 </div>
             </div>

@@ -14,6 +14,10 @@ export namespace Components {
 
   interface WtechBackdrop {
     /**
+    * If `true`, the backdrop will be animated.
+    */
+    'animated': boolean;
+    /**
     * If `true`, the backdrop will stop propagation on tap.
     */
     'stopPropagation': boolean;
@@ -27,6 +31,10 @@ export namespace Components {
     'visible': boolean;
   }
   interface WtechBackdropAttributes extends StencilHTMLAttributes {
+    /**
+    * If `true`, the backdrop will be animated.
+    */
+    'animated'?: boolean;
     /**
     * Emitted when the backdrop is tapped.
     */
