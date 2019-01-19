@@ -1,4 +1,13 @@
 :host {
+    /**
+     * @prop --color: background color of the backdrop
+     * @prop --z-index: z-index of the backdrop
+     * @prop --opacity: opacity of the backdrop
+     */
+    --opacity: 0.32;
+    --z-index: 10;
+    --color: #000;
+
     top: 0;
     bottom: 0;
     left: 0;
@@ -8,10 +17,10 @@
     position: absolute;
   
     cursor: pointer;
-    opacity: .32;
+    opacity: var(--opacity, 0.32);
     touch-action: none;
-    z-index: 10;
-    background-color: black;
+    z-index: var(--z-index, 10);
+    background-color: var(--color, #000);
 }
 
 :host(.backdrop-animated) {

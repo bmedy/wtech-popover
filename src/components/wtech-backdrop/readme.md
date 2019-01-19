@@ -22,6 +22,15 @@
 | `wtechBackdropTap` | Emitted when the backdrop is tapped. | `CustomEvent<void>` |
 
 
+## CSS Custom Properties
+
+| Name        | Description                      |
+| ----------- | -------------------------------- |
+| `--color`   | background color of the backdrop |
+| `--opacity` | opacity of the backdrop          |
+| `--z-index` | z-index of the backdrop          |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

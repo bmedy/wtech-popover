@@ -45,6 +45,16 @@ Type: `void`
 
 
 
+## CSS Custom Properties
+
+| Name           | Description                       |
+| -------------- | --------------------------------- |
+| `--arrow-size` | size of the arrow                 |
+| `--background` | Background of the popover content |
+| `--color`      | Color of the popover content      |
+| `--z-index`    | z-index of popover content        |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
